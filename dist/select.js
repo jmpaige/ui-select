@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.19.8 - 2019-09-11T14:19:30.683Z
+ * Version: 0.19.8 - 2019-09-11T14:30:36.602Z
  * License: MIT
  */
 
@@ -2330,7 +2330,7 @@ uis.directive('uiSelectSort', ['$timeout', 'uiSelectConfig', 'uiSelectMinErr', f
 
       element.on('dragstart', function(event) {
         element.addClass(draggingClassName);
-        var dataTransferObject = event.dataTransfer || (event.originalEvent && event.originalEvent.dataTransfer);
+        var dataTransferObject = event.dataTransfer || (event.originalEvent && event.originalEvent.dataTransfer) ? event.originalEvent.dataTransfer : null;
         if (dataTransferObject){
           dataTransferObject.setData('text', scope.$index.toString());
         }
