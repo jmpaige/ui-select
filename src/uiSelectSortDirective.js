@@ -37,8 +37,10 @@ uis.directive('uiSelectSort', ['$timeout', 'uiSelectConfig', 'uiSelectMinErr', f
 
       element.on('dragstart', function(event) {
         element.addClass(draggingClassName);
-
-        (event.dataTransfer || event.originalEvent.dataTransfer).setData('text', scope.$index.toString());
+        var dataTransferObject = event.dataTransfer || (event.originalEvent && event.originalEvent.dataTransfer) ? event.originalEvent.dataTransfer : null;
+        if (dataTransferObject){
+          dataTransferObject.setData('text', scope.$index.toString());
+        }
       });
 
       element.on('dragend', function() {
